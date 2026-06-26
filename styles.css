@@ -58,7 +58,7 @@ button {
   padding: clamp(22px, 4vw, 44px) clamp(16px, 4vw, 56px);
   overflow: hidden;
   isolation: isolate;
-  background-image: url("assets/low-hp-lady-hero.png");
+  background-image: url("low-hp-lady-hero.png");
   background-size: cover;
   background-position: center 42%;
 }
