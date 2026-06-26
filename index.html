@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>La roue de Low_Hp_Lady</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-label="La roue de Low_Hp_Lady">
+        <div class="hero__veil"></div>
+        <div class="hero__content">
+          <p class="kicker">Tournoi TikTok</p>
+          <h1>La roue de Low_Hp_Lady</h1>
+          <p class="subtitle">Tirage pondéré par participations, prêt pour les lives et les tournois.</p>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Roue et participants">
+        <div class="wheel-panel">
+          <div class="wheel-stage">
+            <div class="pointer" aria-hidden="true"></div>
+            <canvas id="wheel" width="760" height="760" aria-label="Roue de tirage"></canvas>
+            <button class="spin-button" id="spinButton" type="button">
+              <span>Lancer</span>
+            </button>
+          </div>
+
+          <div class="result-bar" aria-live="polite">
+            <span class="result-label">Gagnante ou gagnant</span>
+            <strong id="winnerName">En attente du tirage</strong>
+            <span id="winnerWeight">Ajoute des participants pour commencer.</span>
+          </div>
+        </div>
+
+        <aside class="control-panel" aria-label="Gestion des participants">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Participants</p>
+              <h2>Entrées TikTok</h2>
+            </div>
+            <button class="ghost-button" id="clearButton" type="button" title="Vider la liste">Vider</button>
+          </div>
+
+          <form class="entry-form" id="entryForm">
+            <label>
+              Pseudo TikTok
+              <input id="nameInput" name="name" type="text" autocomplete="off" placeholder="Aka" required />
+            </label>
+            <label>
+              Participations
+              <input id="countInput" name="count" type="number" min="1" step="1" placeholder="100" required />
+            </label>
+            <button class="primary-button" type="submit">Ajouter</button>
+          </form>
+
+          <label class="bulk-label" for="bulkInput">Import rapide</label>
+          <textarea id="bulkInput" rows="5" spellcheck="false">Aka: 100
+asgard: 30
+Low_Hp_Fan: 12</textarea>
+          <div class="button-row">
+            <button class="secondary-button" id="importButton" type="button">Importer</button>
+            <button class="secondary-button" id="sampleButton" type="button">Exemple</button>
+          </div>
+
+          <div class="stats">
+            <div>
+              <span id="playerCount">0</span>
+              <small>Pseudos</small>
+            </div>
+            <div>
+              <span id="ticketCount">0</span>
+              <small>Participations</small>
+            </div>
+          </div>
+
+          <div class="participants" id="participants" aria-label="Liste des participants"></div>
+        </aside>
+      </section>
+    </main>
+
+    <template id="participantTemplate">
+      <article class="participant">
+        <div>
+          <strong data-name></strong>
+          <span data-share></span>
+        </div>
+        <label>
+          <span class="sr-only">Participations</span>
+          <input data-count type="number" min="1" step="1" />
+        </label>
+        <button data-remove type="button" title="Retirer">×</button>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
